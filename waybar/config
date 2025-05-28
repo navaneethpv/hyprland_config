@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "position": "top", // Waybar position (top|bottom|left|right)
-    //"height": 30, // Uncomment to set a custom height
+    "height": 30, // Uncomment to set a custom height
     // "output": "DP-1", // Uncomment to specify a display
     //"width": 1850, // Uncomment to set a custom width
 
@@ -9,8 +9,8 @@
 
     "modules-left": [
         "custom/launcher",
-        "sway/workspaces",
-        "sway/window",
+        // "sway/workspaces",
+        // "sway/window",
         "hyperland/workspaces",
         "hyperland/window"
     ],
@@ -26,6 +26,8 @@
         "all-outputs": true,
         "format": "{index}",
         "format-icons": {
+            "1": "1",
+            "2": "2",
             "3": "3",
             "4": "4",
             "5": "5",
@@ -36,34 +38,39 @@
             "10": "10"
         }
     },
-    "sway/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "format": "{index}",
-        "format-icons": {
-            "3": "3",
-            "4": "4",
-            "5": "5",
-            "6": "6",
-            "7": "7",
-            "8": "8",
-            "9": "9",
-            "10": "10"
-        }
-    },
+    
+    "hyperland/window": {
+    "format": "{}",
+    "max-length": 120
+},
+    // "sway/workspaces": {
+    //     "disable-scroll": true,
+    //     "all-outputs": true,
+    //     "format": "{index}",
+    //     "format-icons": {
+    //         "3": "3",
+    //         "4": "4",
+    //         "5": "5",
+    //         "6": "6",
+    //         "7": "7",
+    //         "8": "8",
+    //         "9": "9",
+    //         "10": "10"
+    //     }
+    // },
 
-    "sway/window": {
-        "format": "{}",
-        //"all-outputs": true, // Active window shows only on active display when commented
-        "max-length": 120,
-        "on-click": "swayr merge-config ~/.config/swayr/waybar_config.toml; swayr switch-workspace-or-window; swayr reload-config",
-    },
+    // "sway/window": {
+    //     "format": "{}",
+    //     //"all-outputs": true, // Active window shows only on active display when commented
+    //     "max-length": 120,
+    //     "on-click": "swayr merge-config ~/.config/swayr/waybar_config.toml; swayr switch-workspace-or-window; swayr reload-config",
+    // },
 
 // Configuration - modules-center
     
     "modules-center": [
         "network",
-        "clock",
+        "clock"
 
     ],
 
@@ -144,8 +151,8 @@
     "custom/pacman": {
         "format": "󰮯",
         "tooltip-format": "L󰍽: Pacseek\nR󰍽: Upgrade",
-        "on-click": "footclient -T waybar_pacseek -e pacseek",
-        "on-click-right": "footclient -T waybar_garuda-update -e bash -c 'garuda-update && (read -p \"Update complete. Press Enter to exit.\" && exit 0) || (read -p \"Update failed. Press Enter to exit.\" && exit 1)'",
+        "on-click": "alacritty -t waybar_pacseek -e pacseek",
+        "on-click-right": "alacritty -t waybar_garuda-update -e bash -c 'garuda-update && (read -p \"Update complete. Press Enter to exit.\" && exit 0) || (read -p \"Update failed. Press Enter to exit.\" && exit 1)'",
     },
 
     "custom/keyboard-layout": {
@@ -156,7 +163,7 @@
         "interval": 30,
         // See example config for sending signal to Waybar in ~/.config/sway/config.d/input
         "signal": 1,
-        "on-click": "~/.config/waybar/scripts/keyhint.sh",
+        "on-click": "~/.config/waybar/scripts/keyhint.sh"
     },
     
     "group/resources": {
@@ -165,12 +172,12 @@
             "transition-duration": 500,
             "children-class": "resources-drawer",
             "transition-left-to-right": true,
-            "click-to-reveal": true,
+            "click-to-reveal": true
         },
         "modules": [
             "cpu",
             "temperature",
-            "disk",
+            "disk"
         ]
     },
 
@@ -179,7 +186,7 @@
         "format": " {usage}%",
         "states": {
             "warning": 70,
-            "critical": 90,
+            "critical": 90
         },
     },
     
@@ -196,7 +203,7 @@
         "format": "󰋊 {percentage_used}%",
         "path": "/",
         "on-click": "footclient -T waybar_dua -e dua i /",
-        "tooltip-format": "    󰍽: dua\nTotal: {total}\n Used: {used} ({percentage_used}%)\n Free: {free} ({percentage_free}%)",
+        "tooltip-format": "    󰍽: dua\nTotal: {total}\n Used: {used} ({percentage_used}%)\n Free: {free} ({percentage_free}%)"
     },
 
     "memory": {
@@ -216,7 +223,7 @@
         "on-click": "pavucontrol",
         "on-click-right": "pamixer --toggle-mute",
         "format-icons": ["󰕿", "󰖀", "󰕾"],
-        "tooltip-format": "L󰍽: pavucontrol\nR󰍽: Toggle mute\nNode: {node_name}",
+        "tooltip-format": "L󰍽: pavucontrol\nR󰍽: Toggle mute\nNode: {node_name}"
     },
 
     "battery": {
@@ -239,14 +246,14 @@
             "transition-duration": 500,
             "children-class": "settings-drawer",
             "transition-left-to-right": true,
-            "click-to-reveal": true,
+            "click-to-reveal": true
         },
         "modules": [
             "custom/settings",
             "idle_inhibitor",
             "backlight",
             "bluetooth",
-            "tray",
+            "tray"
         ]
     },
     "custom/settings": {
@@ -327,7 +334,7 @@
             "custom/reboot-uefi",
             "custom/log-off",
             "custom/suspend",
-            "custom/lock",
+            "custom/lock"
         ]
     },
     "custom/power": {
