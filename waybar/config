@@ -140,14 +140,14 @@
 		"interval": 5
     },
 	"custom/clipboard": {
-		"format": " ",
-		"interval": "once",
-		"return-type": "json",
-		"on-click": "cliphist list | sed '/^$/d' | rofi -dmenu -p 'Clipboard' | cliphist decode | wl-copy; pkill -RTMIN+9 waybar",
-		"on-click-right": "cliphist delete; pkill -RTMIN+9 waybar",
-		"on-click-middle": "cliphist wipe",
-		"exec": "printf '{\"tooltip\":\"%s\"}' $(cliphist list | wc -l)",
-		"signal": 9
+    "format": " ",
+    "interval": "once",
+    "return-type": "json",
+    "on-click": "cliphist list | sed '/^$/d' | rofi -dmenu -p 'Clipboard' | cliphist decode | wl-copy; pkill -RTMIN+9 waybar",
+    "on-click-right": "cliphist list | sed '/^$/d' | rofi -dmenu -p 'Delete entry' | cliphist delete; pkill -RTMIN+9 waybar",
+    "on-click-middle": "cliphist wipe; pkill -RTMIN+9 waybar",
+    "exec": "printf '{\"tooltip\":\"%s\"}' $(cliphist list | wc -l)",
+    "signal": 9
 	},
 	"custom/music": {
 		"format": "  {}",
@@ -162,8 +162,8 @@
 	},
 	"custom/power": {
 		"format": "󰐥",
-		"on-click": "hyprctl dispatch exit",
-		"on-click-right": "poweroff",
+		"on-click": "poweroff",
+		"on-click-right": "hyprctl dispatch exit",
 		"tooltip": true
 	},
 	"temperature": {

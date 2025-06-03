@@ -10,7 +10,7 @@ WALLPAPERS=(/home/navaneeth/Downloads/wallpaper/explorer_green_day.jpg\
 while true; do
     for WALL in "${WALLPAPERS[@]}"; do
         hyprctl hyprpaper wallpaper "eDP-1,$WALL"
-        swww img "$WALL" --transition-type fade --transition-duration 5
+        # swww img "$WALL" --transition-type fade --transition-duration 5
         sleep 120s
     done
 done
